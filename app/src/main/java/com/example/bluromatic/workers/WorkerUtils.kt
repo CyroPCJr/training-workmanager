@@ -91,8 +91,8 @@ fun makeStatusNotification(message: String, context: Context) {
 fun blurBitmap(bitmap: Bitmap, blurLevel: Int): Bitmap {
     val input = Bitmap.createScaledBitmap(
         bitmap,
-        bitmap.width/(blurLevel*5),
-        bitmap.height/(blurLevel*5),
+        bitmap.width / (blurLevel * 5),
+        bitmap.height / (blurLevel * 5),
         true
     )
     return Bitmap.createScaledBitmap(input, bitmap.width, bitmap.height, true)

@@ -46,7 +46,7 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
@@ -75,9 +75,11 @@ fun BluromaticScreen(blurViewModel: BlurViewModel = viewModel(factory = BlurView
             .fillMaxSize()
             .statusBarsPadding()
             .padding(
-                start = WindowInsets.safeDrawing.asPaddingValues()
+                start = WindowInsets.safeDrawing
+                    .asPaddingValues()
                     .calculateStartPadding(layoutDirection),
-                end = WindowInsets.safeDrawing.asPaddingValues()
+                end = WindowInsets.safeDrawing
+                    .asPaddingValues()
                     .calculateEndPadding(layoutDirection)
             )
     ) {
@@ -99,9 +101,9 @@ fun BluromaticScreenContent(
     blurAmountOptions: List<BlurAmount>,
     applyBlur: (Int) -> Unit,
     cancelWork: () -> Unit,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
 ) {
-    var selectedValue by rememberSaveable { mutableStateOf(1) }
+    var selectedValue by rememberSaveable { mutableIntStateOf(1) }
     val context = LocalContext.current
     Column(modifier = modifier) {
         Image(
@@ -134,7 +136,7 @@ private fun BlurActions(
     onStartClick: () -> Unit,
     onSeeFileClick: (String) -> Unit,
     onCancelClick: () -> Unit,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
 ) {
     Row(
         modifier = modifier,
@@ -154,7 +156,7 @@ private fun BlurAmountContent(
     selectedValue: Int,
     blurAmounts: List<BlurAmount>,
     modifier: Modifier = Modifier,
-    onSelectedValueChange: (Int) -> Unit
+    onSelectedValueChange: (Int) -> Unit,
 ) {
     Column(
         modifier = modifier.selectableGroup()
